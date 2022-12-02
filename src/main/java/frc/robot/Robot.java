@@ -20,11 +20,6 @@ import frc.lib.util.Alert.AlertType;
 import frc.lib.sim.PhysicsSim;
 import frc.robot.constants.Constants;
 import frc.robot.constants.PracticeConstants;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.Feeder;
-import frc.robot.subsystems.Indexer;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Launcher;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.VisionLL;
 import frc.robot.subsystems.Swerve.Swerve;
@@ -45,11 +40,6 @@ public class Robot extends TimedRobot {
 
     // subsystems and hardware are defined here
     public static Swerve swerve;
-    public static Intake intake;
-    public static Indexer indexer;
-    public static Feeder feeder;
-    public static Launcher launcher;
-    public static Climber climber;
     public static VisionLL visionLL;
     public static Vision vision;
     public static Pneumatics pneumatics;
@@ -59,11 +49,6 @@ public class Robot extends TimedRobot {
 
     private void intializeSubsystems() {
         swerve = new Swerve();
-        intake = new Intake();
-        indexer = new Indexer();
-        feeder = new Feeder();
-        launcher = new Launcher();
-        climber = new Climber();
         visionLL = new VisionLL();
         vision = new Vision(new VisionIOLimelight());
         vision.setTranslationConsumer(visionLL::setTranslationToGoal);

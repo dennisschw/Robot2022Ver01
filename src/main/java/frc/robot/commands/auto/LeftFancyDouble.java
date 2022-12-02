@@ -21,19 +21,19 @@ public class LeftFancyDouble extends SequentialCommandGroup {
   PathPlannerTrajectory PrepOpponentBall = PathPlanner.loadPath("LFD_PrepOpponentBall", 3, 3);
   PathPlannerTrajectory GetOpponentBall = PathPlanner.loadPath("LFD_GetOpponentBall", 3, 3);
 
-  public LeftFancyDouble() {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      AutonCommands.intializePathFollowing(GetFirstBalls),
-      AutonCommands.llShotwithTimeout(15).alongWith(
-        AutonCommands.followPathAndIntake(GetFirstBalls, 2).andThen(
-          AutonCommands.intake(0.5),
-          AutonCommands.feed(1.5), //Feed two balls
-          AutonCommands.followPathAndIntake(PrepOpponentBall, 2),
-          AutonCommands.followPathAndIntake(GetOpponentBall, 2),
-          AutonCommands.intake(2),
-          AutonCommands.feed(1)
-    )));
-  }
+  // public LeftFancyDouble() {
+  //   // Add your commands in the addCommands() call, e.g.
+  //   // addCommands(new FooCommand(), new BarCommand());
+  //   addCommands(
+  //     AutonCommands.intializePathFollowing(GetFirstBalls),
+  //     AutonCommands.llShotwithTimeout(15).alongWith(
+  //       AutonCommands.followPathAndIntake(GetFirstBalls, 2).andThen(
+  //         AutonCommands.intake(0.5),
+  //         AutonCommands.feed(1.5), //Feed two balls
+  //         AutonCommands.followPathAndIntake(PrepOpponentBall, 2),
+  //         AutonCommands.followPathAndIntake(GetOpponentBall, 2),
+  //         AutonCommands.intake(2),
+  //         AutonCommands.feed(1)
+  //   )));
+  // }
 }

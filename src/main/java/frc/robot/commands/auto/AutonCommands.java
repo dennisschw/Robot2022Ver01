@@ -11,34 +11,13 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Robot;
-import frc.robot.commands.ballpath.BallPathCommands;
 import frc.robot.commands.swerve.LLAim;
 import frc.robot.commands.swerve.SwerveDrive;
 import frc.robot.commands.swerve.TeleopSwerve;
 
 public class AutonCommands {
 
-    public static Command intake(){
-        return BallPathCommands.intakeBalls();
-        //return new WaitCommand(1);
-    }
 
-    public static Command intake(double time){
-        return intake().withTimeout(time);
-    }
-
-    public static Command followPathAndIntake(PathPlannerTrajectory path, double time){
-        return new SwerveFollowCommand(path).deadlineWith(intake()).withTimeout(time);
-    }
-
-    public static Command feed(double time){
-        return BallPathCommands.feed().withTimeout(time);
-    }
-
-    public static Command llShotwithTimeout(double time){
-        return BallPathCommands.llShotRPM().withTimeout(time);
-        //return BallPathCommands.lowGoalShot().withTimeout(time);
-    }
 
     public static Command driveForTime(double time, double speed){
         return new SwerveDrive(false, speed, 0).withTimeout(time);

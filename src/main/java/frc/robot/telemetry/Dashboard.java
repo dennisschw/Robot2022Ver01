@@ -28,10 +28,7 @@ public class Dashboard {
         //If we are not FMS enabled run these
         if (!Constants.isFMSEnabled()){    
             Robot.visionLL.dashboard();
-            Robot.intake.dashboard();
-            Robot.indexer.dashboard();
             Robot.swerve.dashboard();
-            Robot.launcher.dashboard();
         }
     }
 

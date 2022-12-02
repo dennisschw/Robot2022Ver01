@@ -12,13 +12,9 @@ import frc.lib.gamepads.XboxGamepad.XboxAxis;
 import frc.lib.gamepads.mapping.ExpCurve;
 import frc.lib.util.Alert;
 import frc.robot.Robot.RobotState;
-import frc.robot.commands.ClimberCommands;
 import frc.robot.commands.ResetGyro;
-import frc.robot.commands.ballpath.BallPathCommands;
 import frc.robot.commands.swerve.LLAim;
 import frc.robot.commands.swerve.TeleopSwerve;
-import frc.robot.subsystems.Climber;
-
 public class Gamepads {
 	// Create Joysticks first so they can be used in defaultCommands
 	public static XboxGamepad driver = new XboxGamepad(0, 0, 0);
@@ -96,60 +92,18 @@ public class Gamepads {
 		new AndButton(driver.leftBumper, driver.Dpad.Down).whileHeld(new ResetGyro(180));
 		new AndButton(driver.leftBumper, driver.Dpad.Right).whileHeld(new ResetGyro(270));
 
-		driver.aButton.whileHeld(BallPathCommands.intakeBalls());
 		//driver.bButton.whileHeld(BallPathCommands.sortBalls());
 		driver.bButton.whileHeld(new TeleopSwerve(Robot.swerve, false, false));
-		driver.yButton.whileHeld(BallPathCommands.eject());
-		driver.xButton.whileHeld(BallPathCommands.feed());
 
 
-		driver.selectButton.whenPressed(BallPathCommands.stopLauncher());
-		
+	
 		
 		// Aim with limelight
-		driver.rightBumper.whileHeld(new LLAim());
-		new AndNotButton(driver.rightBumper, driver.leftBumper).whileHeld(BallPathCommands.llShotRPM());
+		//driver.rightBumper.whileHeld(new LLAim());
+		//new AndNotButton(driver.rightBumper, driver.leftBumper).whileHeld(BallPathCommands.llShotRPM());
 	}
 
 	public static void operatorBindings() {
-		//Intake
-		operator.aButton.whileHeld(BallPathCommands.intakeBalls());
-
-		//Eject
-		operator.yButton.whileHeld(BallPathCommands.eject());
-
-		//Feeder
-		operator.xButton.whileHeld(BallPathCommands.feed());
-
-		//Unjam
-		operator.bButton.whileHeld(BallPathCommands.unJamAll());
-
-		// Fender
-		operator.leftTriggerButton.whileHeld(BallPathCommands.lowGoalShot());
-
-		// Tarmac
-		operator.rightTriggerButton.whileHeld(BallPathCommands.tarmacShot());
-
-		// Far Shot
-		operator.rightBumper.whileHeld(BallPathCommands.farShot());
-
-		operator.startButton.whenPressed(BallPathCommands.stopLauncher());
-
-		// Climber Controls
-		operator.Dpad.Up.whenPressed(ClimberCommands.fullUp());
-		operator.Dpad.Down.whenPressed(ClimberCommands.climb());
-		operator.Dpad.Left.whenPressed(ClimberCommands.nextRungDown());
-		operator.Dpad.Right.whenPressed(ClimberCommands.nextRungUp());
-
-		operator.selectButton.whenPressed(ClimberCommands.zeroClimberPosition());
-
-		//Manual climb tilt control
-		new AndNotButton(operator.leftBumper, operator.Dpad.Down).whileHeld(ClimberCommands.tiltUp());
-
-		//Return to default command when pressed
-		operator.leftStickButton.whileHeld(Robot.climber.defaultCommand());
-		new AxisButton(operator, XboxAxis.LEFT_Y, 0.15, ThresholdType.DEADBAND)
-			.whenPressed(Robot.climber.defaultCommand());
 	}
 
 	// Configure the button bindings for the driver control in Test Mode

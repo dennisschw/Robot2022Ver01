@@ -21,20 +21,20 @@ public class FourBallAuto extends SequentialCommandGroup {
   PathPlannerTrajectory GoToTerminal = PathPlanner.loadPath("Four_GoToTerminal", 3, 3);
   PathPlannerTrajectory GoTo2ndShots = PathPlanner.loadPath("Four_2ndShots", 3, 3);
 
-  public FourBallAuto() {
+  //public FourBallAuto() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      AutonCommands.intializePathFollowing(GetFirstBalls),
-      AutonCommands.llShotwithTimeout(15).alongWith(
-        AutonCommands.followPathAndIntake(GetFirstBalls, 2).andThen(
-          AutonCommands.intake(0.5),
-          AutonCommands.feed(1), //Feed first two balls
-          AutonCommands.followPathAndIntake(GoToTerminal, 4),
-          AutonCommands.intake(2.5),
-          new SwerveFollowCommand(GoTo2ndShots).withTimeout(4),
-          AutonCommands.autonLLAim().withTimeout(1),
-          AutonCommands.feed(1)
-    )));
-  }
+  //   addCommands(
+  //     AutonCommands.intializePathFollowing(GetFirstBalls),
+  //     AutonCommands.llShotwithTimeout(15).alongWith(
+  //       AutonCommands.followPathAndIntake(GetFirstBalls, 2).andThen(
+  //         AutonCommands.intake(0.5),
+  //         AutonCommands.feed(1), //Feed first two balls
+  //         AutonCommands.followPathAndIntake(GoToTerminal, 4),
+  //         AutonCommands.intake(2.5),
+  //         new SwerveFollowCommand(GoTo2ndShots).withTimeout(4),
+  //         AutonCommands.autonLLAim().withTimeout(1),
+  //         AutonCommands.feed(1)
+  //   )));
+  // }
 }
