@@ -1,4 +1,5 @@
-//Created by Spectrum3847
+// Created by Circuit Breakers 4513
+// Based on code by Spectrum3847
 package frc.robot.telemetry;
 
 import edu.wpi.first.wpilibj.Notifier;

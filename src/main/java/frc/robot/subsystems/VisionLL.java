@@ -1,4 +1,5 @@
-//Created by Spectrum3847
+// Created by Circuit Breakers 4513
+// Based on code by Spectrum3847
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Translation2d;
@@ -10,7 +11,6 @@ import frc.lib.drivers.LimeLight;
 import frc.lib.drivers.LimeLightControlModes.LedMode;
 import frc.lib.util.LLDistance;
 import frc.robot.Robot;
-import frc.robot.constants.LauncherConstants;
 import frc.robot.constants.VisionConstants;
 import frc.robot.subsystems.Vision.Vision.TimestampedTranslation2d;
 import frc.robot.telemetry.Log;
@@ -95,10 +95,11 @@ public class VisionLL extends SubsystemBase {
 
     public double getVisionLauncherRPM(){
         double distance = getDistanceToGoalFeet();
-        if (distance <= 0){
-            return LauncherConstants.LowGoalShotSpeed;
-        }
-        return (LauncherConstants.visionPerFootSpeed * distance) + (LauncherConstants.visionBaseSpeed);
+        // if (distance <= 0){
+        //     return LauncherConstants.LowGoalShotSpeed;
+        // }
+        // return (LauncherConstants.visionPerFootSpeed * distance) + (LauncherConstants.visionBaseSpeed);
+        return 0; // Place holder for updated code
     }
 
     public double getHoodAngle(){

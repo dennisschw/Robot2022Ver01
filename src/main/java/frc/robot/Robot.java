@@ -1,4 +1,5 @@
-//Created by Spectrum3847
+// Created by Circuit Breakers 4513
+// Based on code by Spectrum3847
 package frc.robot;
 
 import java.net.InetAddress;
@@ -15,7 +16,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.lib.util.Alert;
-import frc.lib.util.SpectrumPreferences;
+import frc.lib.util.TeamPreferences;
 import frc.lib.util.Alert.AlertType;
 import frc.lib.sim.PhysicsSim;
 import frc.robot.constants.Constants;
@@ -44,7 +45,7 @@ public class Robot extends TimedRobot {
     public static Vision vision;
     public static Pneumatics pneumatics;
     public static PowerDistribution pdh;
-    public static SpectrumPreferences prefs;
+    public static TeamPreferences prefs;
     public static ShuffleboardTabs shuffleboardTabs;
 
     private void intializeSubsystems() {
@@ -54,7 +55,7 @@ public class Robot extends TimedRobot {
         vision.setTranslationConsumer(visionLL::setTranslationToGoal);
         pneumatics = new Pneumatics();
         pdh = new PowerDistribution(1, ModuleType.kRev);
-        prefs = SpectrumPreferences.getInstance();
+        prefs = TeamPreferences.getInstance();
         shuffleboardTabs = new ShuffleboardTabs();
     }
 

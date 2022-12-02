@@ -4,11 +4,11 @@ import java.util.Vector;
 
 import edu.wpi.first.wpilibj.Preferences;
 
-public class SpectrumPreferences {
-	private static SpectrumPreferences instance;
+public class TeamPreferences {
+	private static TeamPreferences instance;
 	private static boolean reset = false;
 
-	private SpectrumPreferences() {
+	private TeamPreferences() {
 	}
 
 	/**
@@ -16,9 +16,9 @@ public class SpectrumPreferences {
 	 *
 	 * @return the preferences instance
 	 */
-	public static synchronized SpectrumPreferences getInstance() {
+	public static synchronized TeamPreferences getInstance() {
 		if (instance == null) {
-			instance = new SpectrumPreferences();
+			instance = new TeamPreferences();
 		}
 		return instance;
 	}

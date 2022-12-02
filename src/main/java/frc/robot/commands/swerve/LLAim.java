@@ -5,7 +5,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.lib.util.Logger;
-import frc.lib.util.SpectrumPreferences;
+import frc.lib.util.TeamPreferences;
 import frc.robot.Robot;
 import frc.robot.telemetry.Log;
 
@@ -36,10 +36,10 @@ public class LLAim extends PIDCommand {
   @Override
   public void initialize() {
     Robot.visionLL.limeLightLEDOn();
-    kP = SpectrumPreferences.getNumber("LL-AIM kP", kP)/100;
-    kI = SpectrumPreferences.getNumber("LL-AIM kI", kI)/100;
-    kD = SpectrumPreferences.getNumber("LL-AIM kD", kD)/100;
-    double tolerance = SpectrumPreferences.getNumber("LL-AIM Tolerance", 1.0);
+    kP = TeamPreferences.getNumber("LL-AIM kP", kP)/100;
+    kI = TeamPreferences.getNumber("LL-AIM kI", kI)/100;
+    kD = TeamPreferences.getNumber("LL-AIM kD", kD)/100;
+    double tolerance = TeamPreferences.getNumber("LL-AIM Tolerance", 1.0);
     this.getController().setPID(kP, kI, kD);
     getController().setTolerance(tolerance);
 

@@ -29,7 +29,7 @@ public class TunablePrefrence {
   public TunablePrefrence(String dashboardKey, double v) {
     value = v;
     key = dashboardKey;
-    SpectrumPreferences.getNumber(dashboardKey, value);
+    TeamPreferences.getNumber(dashboardKey, value);
   }
 
   /**
@@ -45,7 +45,7 @@ public class TunablePrefrence {
   * Sets the networktalbes value even if it already exists.
   */
   public void setNetworkValue(double v) {
-    SpectrumPreferences.setNumber(key, v);
+    TeamPreferences.setNumber(key, v);
   }
 
   /**
@@ -55,7 +55,7 @@ public class TunablePrefrence {
    */
   public double get() {
     if (Constants.TUNING_MODE) {
-      value = SpectrumPreferences.getNumber(key, value);
+      value = TeamPreferences.getNumber(key, value);
       return value;
     } else {
       return value;

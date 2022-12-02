@@ -1,5 +1,6 @@
-//Created by Spectrum3847
-//Based on code by FRC4141
+// Created by Circuit Breakers 4513
+// Based on code by Spectrum3847
+// Based on code by FRC4141
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -29,7 +30,7 @@ public class Gamepads {
 	// Configure all the controllers
 	public static void configure() {
 		configureDriver();
-		configureOperator();
+		//configureOperator();
 	}
 
 	public static void resetConfig() {
@@ -62,27 +63,25 @@ public class Gamepads {
 	}
 
 	// Configure the operator controller
-	public static void configureOperator() {
-		// Detect whether the xbox controller has been plugged in after start-up
-		if (!operatorConfigured) {
-			boolean isConnected = operator.isConnected();
-			if (!isConnected){
-				noOperatorAlert.set(true);
-				return;
-			}
+	// public static void configureOperator() {
+	// 	// Detect whether the xbox controller has been plugged in after start-up
+	// 	if (!operatorConfigured) {
+	// 		boolean isConnected = operator.isConnected();
+	// 		if (!isConnected){
+	// 			noOperatorAlert.set(true);
+	// 			return;
+	// 		}
 
-			// Configure button bindings once operatorIsConnected is true
-			if (Robot.getState() == RobotState.TEST) {
-				operatorTestBindings();
-			} else {
-				operatorBindings();
-			}
-			operatorConfigured = true;
-
-			
-			noOperatorAlert.set(false);
-		}
-	}
+	// 		// Configure button bindings once operatorIsConnected is true
+	// 		if (Robot.getState() == RobotState.TEST) {
+	// 			operatorTestBindings();
+	// 		} else {
+	// 			operatorBindings();
+	// 		}
+	// 		operatorConfigured = true;
+	// 		noOperatorAlert.set(false);
+	// 	}
+	// }
 
 	public static void driverBindings() {
 		// Driver Controls
@@ -91,13 +90,8 @@ public class Gamepads {
 		new AndButton(driver.leftBumper, driver.Dpad.Left).whileHeld(new ResetGyro(90));
 		new AndButton(driver.leftBumper, driver.Dpad.Down).whileHeld(new ResetGyro(180));
 		new AndButton(driver.leftBumper, driver.Dpad.Right).whileHeld(new ResetGyro(270));
+		driver.bButton.whileHeld(new TeleopSwerve(Robot.swerve, false, false));	
 
-		//driver.bButton.whileHeld(BallPathCommands.sortBalls());
-		driver.bButton.whileHeld(new TeleopSwerve(Robot.swerve, false, false));
-
-
-	
-		
 		// Aim with limelight
 		//driver.rightBumper.whileHeld(new LLAim());
 		//new AndNotButton(driver.rightBumper, driver.leftBumper).whileHeld(BallPathCommands.llShotRPM());
@@ -116,13 +110,13 @@ public class Gamepads {
 
 	}
 
-	public static double getClimberJoystick(){
-		double value = operator.leftStick.getY() * -1;
-		if (value > 0){
-			return value * 0.4;
-		}
-		return value;
-	}
+	// public static double getClimberJoystick(){
+	// 	double value = operator.leftStick.getY() * -1;
+	// 	if (value > 0){
+	// 		return value * 0.4;
+	// 	}
+	// 	return value;
+	// }
 
 	public static double getDriveY(){
 		return throttleCurve.calculateMappedVal(driver.leftStick.getY());
